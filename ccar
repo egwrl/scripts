@@ -1,0 +1,34 @@
+getgenv().Enabled = true --Enabled/Disable the Autofarm
+
+   local function createplatform()
+   local platform = Instance.new("Part", game:GetService("Workspace"))
+   platform.Size = Vector3.new(2048, 1, 2048)
+   platform.CFrame = CFrame.new(-3966.61011, 608.327026, -4139.58984, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+   platform.Anchored = true
+   platform.Name = "Platform69"
+   print("Platform created")
+end
+
+
+if game:GetService("Workspace"):FindFirstChild("Platform69") then
+   print("Platform69 is there")
+   else
+   createplatform()
+end
+
+local model = game:GetService("Workspace")[game.Players.LocalPlayer.Name.. "'s car"]:GetDescendants()
+local car = game:GetService("Workspace")[game.Players.LocalPlayer.Name.. "'s car"].Stats
+
+while getgenv().Enabled == true do
+  
+game.Workspace[game.Players.LocalPlayer.Name.."'s car"].Stats.MaxSpeed.Value=math.huge
+game.Workspace[game.Players.LocalPlayer.Name.."'s car"].Stats.Torque.Value=math.huge
+  
+wait(3) --[TP INTERVAL] (In seconds) change this to how often you want to be TP'ed
+
+for index, descendant in pairs(model) do
+   if descendant:IsA("BasePart") then
+   descendant.CFrame = CFrame.new(-3904.37183, 618.744934, -5148.86719, -0.999841809, -3.16823168e-09, 0.0177878682, -2.6610929e-09, 1, 2.85340409e-08, -0.0177878682, 2.84821908e-08, -0.999841809)
+end
+end
+end
