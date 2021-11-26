@@ -1,0 +1,33 @@
+weaponData = game:GetService("ReplicatedFirst")["_0xS0URC3X"].Shared.WeaponDataManager
+--Choose what you want to be enabled (false = disabled and true = enabled )
+-- Disabling them after you have executed the script won't help so choose before executed!!!!!!!!!!!!!!!!
+getfenv().infAmmo = true
+getfenv().rapidFire = true
+getfenv().noRecoil = true
+getfenv().makeAllGunsAutomatic = true
+getfenv().noReloadTime = true
+function GunMod()
+for i, v in pairs(weaponData:GetChildren()) do
+guns = require(v)
+for i2, v2 in pairs(guns) do
+if getfenv().infAmmo then
+v2.MAX_AMMO = math.huge
+end
+if getfenv().rapidFire then
+v2.SPREAD = 0
+v2.ROF = math.huge
+v2.MAX_DAMAGE_RANGE = math.huge
+end
+if getfenv().noRecoil then
+v2.RECOIL_STRENGTH = 0
+end
+if getfenv().noReloadTime then
+v2.RELOAD_TIME = 0
+end
+if getfenv().makeAllGunsAutomatic then
+v2.AUTOMATIC = true
+end
+end
+end
+end
+GunMod()
